@@ -1,6 +1,7 @@
 #define ARRAY_LENGTH(x)  (sizeof(x) / sizeof(*x))
 
-void print_array(int *array, int start_idx, int end_idx) {
+void print_array(int *array, int start_idx, int end_idx)
+{
     printf("{");
     for (int i = start_idx; i < end_idx; i++) {
        printf("%d, ", array[i]);
