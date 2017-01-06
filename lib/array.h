@@ -1,7 +1,13 @@
+#ifndef __LIB_ARRAY_H__
+#define __LIB_ARRAY_H__
 #define ARRAY_LENGTH(x)  (sizeof(x) / sizeof(*x))
 
 void print_array(int *array, int start_idx, int end_idx)
 {
+    if (start_idx >= end_idx) {
+        return;
+    }
+
     printf("{");
     for (int i = start_idx; i < end_idx; i++) {
        printf("%d, ", array[i]);
@@ -45,3 +51,4 @@ int get_idx_by_val(int *sorted_list, int list_length, int target)
     }
     return -1;
 }
+#endif
