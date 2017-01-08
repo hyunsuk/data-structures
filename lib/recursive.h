@@ -40,4 +40,15 @@ int recursive_binary_search(int *sorted_list,
         return recursive_binary_search(sorted_list, seek + 1, end_idx, target);
     }
 }
+
+void hanoi_tower_move(int disc_number, char from, char by, char to)
+{
+    if (disc_number == 1) {
+        printf("disc 1 move: %c -> %c \n", from, to);
+    } else {
+        hanoi_tower_move(disc_number - 1, from , to, by);
+        printf("disc %d move: %c -> %c \n", disc_number, from, to);
+        hanoi_tower_move(disc_number - 1, by, from, to);
+    }
+}
 #endif

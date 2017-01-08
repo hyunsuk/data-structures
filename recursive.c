@@ -33,5 +33,7 @@ int main(void)
     print_array_by_idx(alloc_list, idx);
     free(alloc_list);
 
+    hanoi_tower_move(4, 'A', 'B', 'C');
+
     return 0;
 }
