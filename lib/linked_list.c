@@ -23,7 +23,16 @@ void f_insert(linked_list *list, list_data data)
 
 void sorted_insert(linked_list *list, list_data data)
 {
-    // not yet
+    node *new_node = (node*)malloc(sizeof(node));
+    node *pred = list->head;
+    new_node->data = data;
+
+    while (pred->next != NULL && 0 != list->comp(data, pred->next->data)) {
+        pred = pred->next;
+    }
+    new_node->next = pred->next;
+    pred->next = new_node;
+    list->num_of_data++;
 }
 
 void list_insert(linked_list *list, list_data data)
@@ -81,5 +90,5 @@ int list_count(linked_list *list)
 
 void set_sort_rule(linked_list *list, int (*comp)(list_data d1, list_data d2))
 {
-    // not yet
+    list->comp = comp;
 }
