@@ -15,4 +15,11 @@ int Next(ArrayList *list, ListData *data);
 
 ListData Remove(ArrayList *list);
 
+void StackInit(ArrayStack *stack);
+int IsEmpty(ArrayStack *stack);
+
+void Push(ArrayStack *stack, StackData data);
+StackData Pop(ArrayStack *stack);
+StackData Peek(ArrayStack *stack);
+
 #endif

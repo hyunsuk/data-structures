@@ -98,3 +98,38 @@ ListData Remove(ArrayList *list) {
     list->current_position--;
     return data;
 }
+
+void StackInit(ArrayStack *stack) {
+    stack->top = -1;
+}
+
+int IsEmpty(ArrayStack *stack) {
+    if (stack->top == -1) {
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+}
+
+void Push(ArrayStack *stack, StackData data) {
+    stack->top += 1;
+    stack->arr[stack->top] = data;
+}
+
+StackData Pop(ArrayStack *stack) {
+    if (IsEmpty(stack)) {
+        return -1;
+    }
+
+    StackData data = stack->arr[stack->top];
+    stack->top -= 1;
+    return data;
+}
+
+StackData Peek(ArrayStack *stack) {
+    if (IsEmpty(stack)) {
+        return -1;
+    }
+
+    return stack->arr[stack->top];
+}

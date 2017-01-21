@@ -5,17 +5,18 @@
 #define FALSE 0
 
 #define LIST_LEN 100
+#define STACK_LEN 100
 #define ARRAY_LENGTH(x)  (sizeof(x) / sizeof(*x))
 
 typedef int ListData;
+typedef int NodeData;
+typedef int StackData;
 
 typedef struct ArrayList {
     ListData arr[LIST_LEN];
     int length;
     int current_position;
 } ArrayList;
-
-typedef int NodeData;
 
 typedef struct Node {
     NodeData data;
@@ -44,4 +45,10 @@ typedef struct DoublyLinkedList {
     Node *current;
     int length;
 } DoublyLinkedList;
+
+typedef struct ArrayStack {
+    StackData arr[STACK_LEN];
+    int top;
+} ArrayStack;
+
 #endif
