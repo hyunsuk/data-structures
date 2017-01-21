@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "common.h"
 #include "array.h"
 
 void PrintArray(int *array, int start_idx, int end_idx) {

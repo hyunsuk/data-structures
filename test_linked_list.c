@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "lib/common.h"
 #include "lib/linked_list.h"
 
 int WhoIsPrecede(NodeData d1, NodeData d2) {

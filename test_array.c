@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "lib/common.h"
 #include "lib/array.h"
 
 int main(void) {

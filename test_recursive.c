@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "lib/common.h"
 #include "lib/array.h"
 #include "lib/recursive.h"
 
