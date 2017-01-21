@@ -20,6 +20,7 @@ typedef int NodeData;
 typedef struct Node {
     NodeData data;
     struct Node *next;
+    struct Node *prev;
 } Node;
 
 typedef struct LinkedList {
@@ -37,4 +38,10 @@ typedef struct CircularLinkedList {
     int length;
 } CircularLinkedList;
 
+typedef struct DoublyLinkedList {
+    Node *head;
+    Node *tail;
+    Node *current;
+    int length;
+} DoublyLinkedList;
 #endif
