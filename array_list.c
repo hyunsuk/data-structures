@@ -1,44 +1,43 @@
 #include <stdio.h>
 #include "lib/array.h"
 
-int main(void)
-{
-    array_list list;
+int main(void) {
+    ArrayList list;
     int data;
-    arr_list_init(&list);
+    Init(&list);
 
-    arr_list_insert(&list, 11);
-    arr_list_insert(&list, 11);
-    arr_list_insert(&list, 22);
-    arr_list_insert(&list, 22);
-    arr_list_insert(&list, 33);
+    Append(&list, 11);
+    Append(&list, 11);
+    Append(&list, 22);
+    Append(&list, 22);
+    Append(&list, 33);
 
-    printf("list length %d \n", arr_list_count(&list));
+    printf("list length %d \n", Len(&list));
 
-    if (arr_list_first(&list, &data)) {
+    if (First(&list, &data)) {
         printf("%d ", data);
-        while (arr_list_next(&list, &data)) {
+        while (Next(&list, &data)) {
             printf("%d ", data);
         }
         printf("\n");
     }
 
-    if (arr_list_first(&list, &data)) {
+    if (First(&list, &data)) {
         if (data == 22) {
-            arr_list_remove(&list);
+            Remove(&list);
         }
-        while (arr_list_next(&list, &data)) {
+        while (Next(&list, &data)) {
             if (data == 22) {
-                arr_list_remove(&list);
+                Remove(&list);
             }
         }
     }
 
-    printf("current list length %d \n", arr_list_count(&list));
+    printf("current list length %d \n", Len(&list));
 
-    if (arr_list_first(&list, &data)) {
+    if (First(&list, &data)) {
         printf("%d ", data);
-        while (arr_list_next(&list, &data)) {
+        while (Next(&list, &data)) {
             printf("%d ", data);
         }
         printf("\n");
