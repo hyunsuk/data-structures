@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include "lib/linked_list.h"
 
-int who_is_precede(int d1, int d2)
-{
+int who_is_precede(NodeData d1, NodeData d2) {
     if (d1 < d2) {
         return 0;
     } else {
@@ -10,64 +9,63 @@ int who_is_precede(int d1, int d2)
     }
 }
 
-int main(void)
-{
-    linked_list list;
-    linked_list sorted_list;
+int main(void) {
+    LinkedList list;
+    LinkedList sorted_list;
     int data;
 
-    list_init(&list);
-    list_init(&sorted_list);
+    Init(&list);
+    Init(&sorted_list);
 
-    set_sort_rule(&sorted_list, who_is_precede);
+    set_comp_func(&sorted_list, who_is_precede);
 
-    list_insert(&list, 11);
-    list_insert(&list, 11);
-    list_insert(&list, 22);
-    list_insert(&list, 22);
-    list_insert(&list, 33);
+    Append(&list, 11);
+    Append(&list, 11);
+    Append(&list, 22);
+    Append(&list, 22);
+    Append(&list, 33);
 
-    list_insert(&sorted_list, 11);
-    list_insert(&sorted_list, 11);
-    list_insert(&sorted_list, 22);
-    list_insert(&sorted_list, 22);
-    list_insert(&sorted_list, 33);
+    Append(&sorted_list, 11);
+    Append(&sorted_list, 11);
+    Append(&sorted_list, 22);
+    Append(&sorted_list, 22);
+    Append(&sorted_list, 33);
 
-    printf("linked list length %d \n", list_count(&list));
-    printf("sorted linked list length %d \n", list_count(&sorted_list));
+    printf("linked list length %d \n", Len(&list));
+    printf("sorted linked list length %d \n", Len(&sorted_list));
 
-    if (list_first(&list, &data)) {
+    if (First(&list, &data)) {
         printf("%d ", data);
-        while (list_next(&list, &data)) {
+        while (Next(&list, &data)) {
             printf("%d ", data);
         }
         printf("\n");
     }
 
-    if (list_first(&sorted_list, &data)) {
+    if (First(&sorted_list, &data)) {
         printf("%d ", data);
-        while (list_next(&sorted_list, &data)) {
+        while (Next(&sorted_list, &data)) {
             printf("%d ", data);
         }
         printf("\n");
     }
 
-    if (list_first(&list, &data)) {
+    if (First(&list, &data)) {
         if (data == 22) {
-            list_remove(&list);
+            Remove(&list);
         }
-        while (list_next(&list, &data)) {
+        while (Next(&list, &data)) {
             if (data == 22) {
-                list_remove(&list);
+                Remove(&list);
             }
         }
     }
 
-    printf("current linked list length %d \n", list_count(&list));
+    printf("current linked list length %d \n", Len(&list));
 
-    if (list_first(&list, &data)) {
+    if (First(&list, &data)) {
         printf("%d ", data);
-        while (list_next(&list, &data)) {
+        while (Next(&list, &data)) {
             printf("%d ", data);
         }
         printf("\n");

@@ -2,93 +2,88 @@
 #include <stdlib.h>
 #include "linked_list.h"
 
-void list_init(linked_list *list)
-{
-    list->head = (node*)malloc(sizeof(node));
+void Init(LinkedList *list) {
+    // Dummy
+    list->head = (Node *) malloc(sizeof(Node));
     list->head->next = NULL;
+
     list->comp = NULL;
-    list->num_of_data = 0;
+    list->length = 0;
 }
 
-void f_insert(linked_list *list, list_data data)
-{
-    node *new_node = (node*)malloc(sizeof(node));
+void insert(LinkedList *list, NodeData data) {
+    Node *new_node = (Node *) malloc(sizeof(Node));
     new_node->data = data;
 
     new_node->next = list->head->next;
     list->head->next = new_node;
 
-    list->num_of_data++;
+    list->length++;
 }
 
-void sorted_insert(linked_list *list, list_data data)
-{
-    node *new_node = (node*)malloc(sizeof(node));
-    node *pred = list->head;
+void sorted_insert(LinkedList *list, NodeData data) {
+    Node *new_node = (Node *) malloc(sizeof(Node));
+    Node *competitor = list->head;
     new_node->data = data;
 
-    while (pred->next != NULL && 0 != list->comp(data, pred->next->data)) {
-        pred = pred->next;
+    while (competitor->next != NULL &&
+           list->comp(data, competitor->next->data) != 0) {
+        competitor = competitor->next;
     }
-    new_node->next = pred->next;
-    pred->next = new_node;
-    list->num_of_data++;
+    new_node->next = competitor->next;
+    competitor->next = new_node;
+    list->length++;
 }
 
-void list_insert(linked_list *list, list_data data)
-{
+void Append(LinkedList *list, NodeData data) {
     if (list->comp == NULL) {
-        f_insert(list, data);
+        insert(list, data);
     } else {
         sorted_insert(list, data);
     }
 }
 
-int list_first(linked_list *list, list_data *data)
-{
+int Len(LinkedList *list) {
+    return list->length;
+}
+
+int First(LinkedList *list, NodeData *data) {
     if (list->head->next == NULL) {
         return FALSE;
     }
 
+    // Always start next of dummy
     list->before = list->head;
-    list->cur = list->head->next;
+    list->current = list->head->next;
 
-    *data = list->cur->data;
+    *data = list->current->data;
     return TRUE;
 }
 
-int list_next(linked_list *list, list_data *data)
-{
-    if (list->cur->next == NULL) {
+int Next(LinkedList *list, NodeData *data) {
+    if (list->current->next == NULL) {
         return FALSE;
     }
 
-    list->before = list->cur;
-    list->cur = list->cur->next;
+    list->before = list->current;
+    list->current = list->current->next;
 
-    *data = list->cur->data;
+    *data = list->current->data;
     return TRUE;
 }
 
-list_data list_remove(linked_list *list)
-{
-    node *pos = list->cur;
-    list_data data = pos->data;
+NodeData Remove(LinkedList *list) {
+    Node *target = list->current;
+    NodeData data = target->data;
 
-    list->before->next = list->cur->next;
-    list->cur = list->before;
+    list->before->next = list->current->next;
+    list->current = list->before;
 
-    free(pos);
-    list->num_of_data--;
+    free(target);
+    list->length--;
     return data;
 }
 
-int list_count(linked_list *list)
-{
-    return list->num_of_data;
-}
-
-void set_sort_rule(linked_list *list, int (*comp)(list_data d1, list_data d2))
-{
+void set_comp_func(LinkedList *list, int (*comp)(NodeData d1, NodeData d2)) {
     list->comp = comp;
 }

@@ -1,35 +1,33 @@
-#ifndef __LIB_LINKED_LIST_H__
-#define __LIB_LINKED_LIST_H__
+#ifndef LIB_LINKED_LIST_H_
+#define LIB_LINKED_LIST_H_
 
 #define TRUE 1
 #define FALSE 0
 
-typedef int list_data;
+typedef int NodeData;
 
-typedef struct _node
-{
-    list_data data;
-    struct _node *next;
-} node;
+typedef struct Node {
+    NodeData data;
+    struct Node *next;
+} Node;
 
-typedef struct _linked_list
-{
-    node *head;
-    node *cur;
-    node *before;
-    int num_of_data;
-    int (*comp)(list_data d1, list_data d2);
-} linked_list;
+typedef struct LinkedList {
+    Node *head;
+    Node *current;
+    Node *before;
+    int length;
+    int (*comp)(NodeData d1, NodeData d2);
+} LinkedList;
 
-void list_init(linked_list *list);
-void list_insert(linked_list *list, list_data data);
+void Init(LinkedList *list);
+void Append(LinkedList *list, NodeData data);
+int Len(LinkedList *list);
 
-int list_first(linked_list *list, list_data *data);
-int list_next(linked_list *list, list_data *data);
+int First(LinkedList *list, NodeData *data);
+int Next(LinkedList *list, NodeData *data);
 
-list_data list_remove(linked_list *list);
-int list_count(linked_list *list);
+NodeData Remove(LinkedList *list);
 
-void set_sort_rule(linked_list *list, int (*comp)(list_data d1, list_data d2));
+void set_comp_func(LinkedList *list, int (*comp)(NodeData d1, NodeData d2));
 
 #endif
