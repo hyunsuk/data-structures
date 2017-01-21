@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "lib/linked_list.h"
 
-int who_is_precede(NodeData d1, NodeData d2) {
+int WhoIsPrecede(NodeData d1, NodeData d2) {
     if (d1 < d2) {
         return 0;
     } else {
@@ -17,7 +17,7 @@ int main(void) {
     Init(&list);
     Init(&sorted_list);
 
-    set_comp_func(&sorted_list, who_is_precede);
+    set_comp_func(&sorted_list, WhoIsPrecede);
 
     Append(&list, 11);
     Append(&list, 11);
