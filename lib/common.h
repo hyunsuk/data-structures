@@ -51,4 +51,8 @@ typedef struct ArrayStack {
     int top;
 } ArrayStack;
 
+typedef struct Stack {
+    Node *head;
+} Stack;
+
 #endif
