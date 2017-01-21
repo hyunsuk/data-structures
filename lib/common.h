@@ -30,4 +30,11 @@ typedef struct LinkedList {
     int (*comp)(NodeData d1, NodeData d2);
 } LinkedList;
 
+typedef struct CircularLinkedList {
+    Node *tail;
+    Node *current;
+    Node *before;
+    int length;
+} CircularLinkedList;
+
 #endif
