@@ -7,13 +7,13 @@
 
 int OperatorRank(char operator) {
     switch (operator) {
-        case '*':
-        case '/':
+        case MULTIPLY:
+        case DIVIDE:
             return 4;
-        case '+':
-        case '-':
+        case PLUS:
+        case MINUS:
             return 2;
-        case '(':
+        case OPEN_PARENS:
             return 1;
     }
     return -1;
@@ -53,22 +53,22 @@ void ToPostfix(char infix[]) {
 
         } else {
             switch (character) {
-                case '(':
+                case OPEN_PARENS:
                     Push(&stack, character);
                     break;
-                case ')':
+                case CLOSE_PARENS:
                     while(1) {
                         ejected_operator = Pop(&stack);
-                        if (ejected_operator == '(') {
+                        if (ejected_operator == OPEN_PARENS) {
                             break;
                         }
                         postfix[idx++] = ejected_operator;
                     }
                     break;
-                case '+':
-                case '-':
-                case '*':
-                case '/':
+                case PLUS:
+                case MINUS:
+                case MULTIPLY:
+                case DIVIDE:
                     while (!IsEmpty(&stack) && 
                            WhoIsPrecede(Peek(&stack), character) >=0 ) {
                         postfix[idx++] = Pop(&stack);

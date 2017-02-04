@@ -4,6 +4,13 @@
 #define TRUE 1
 #define FALSE 0
 
+#define PLUS '+'
+#define MINUS '-'
+#define MULTIPLY '*'
+#define DIVIDE '/'
+#define OPEN_PARENS '('
+#define CLOSE_PARENS ')'
+
 #define LIST_LEN 100
 #define STACK_LEN 100
 #define ARRAY_LENGTH(x)  (sizeof(x) / sizeof(*x))
