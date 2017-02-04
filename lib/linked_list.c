@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "common.h"
-#include "linked_list.h"
 
 void Init(LinkedList *list) {
     // Dummy

@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include "common.h"
 #include "array.h"
-#include "recursive.h"
 
 long Factorial(int n) {
     if (n <= 0) { // termination

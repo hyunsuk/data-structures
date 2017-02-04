@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "common.h"
-#include "c_linked_list.h"
 
 void Init(CircularLinkedList *list) {
     list->tail = NULL;

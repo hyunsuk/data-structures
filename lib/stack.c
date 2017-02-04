@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "common.h"
-#include "stack.h"
 
 void Init(Stack *stack) {
     stack->head = NULL;

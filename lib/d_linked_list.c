@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "common.h"
-#include "d_linked_list.h"
 
 void Init(DoublyLinkedList *list) {
     // Dummy of head
