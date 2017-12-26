@@ -20,7 +20,7 @@ int main(void)
     if (First(&list, &data)) {
         printf("%d ", data);
 
-        for (i = 0; i < Len(&list) * 3 - 1; i++) { 
+        for (i = 0; i < Len(&list) * 3 - 1; i++) {
             if (Next(&list, &data)) {
                 printf("%d ", data);
             }
@@ -48,7 +48,7 @@ int main(void)
     if (First(&list, &data)) {
         printf("%d ", data);
 
-        for (i = 0; i < Len(&list) - 1; i++) { 
+        for (i = 0; i < Len(&list) - 1; i++) {
             if (Next(&list, &data)) {
                 printf("%d ", data);
             }
