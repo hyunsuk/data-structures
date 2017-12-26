@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "common.h"
 
 void PrintArray(int *array, int start_idx, int end_idx) {
@@ -131,4 +132,52 @@ StackData Peek(ArrayStack *stack) {
     }
 
     return stack->arr[stack->top];
+}
+
+void CircularQueueInit(CircularQueue *pq) {
+    pq->front = 0;
+    pq->rear = 0;
+}
+
+int CircularQueueIsEmpty(CircularQueue *pq) {
+    if(pq->front == pq->rear) {
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+}
+
+int GetCircularQueueNextPositionIndex(int pos) {
+    if(pos == QUEUE_LEN - 1) {
+        return 0;
+    } else {
+        return pos + 1;
+    }
+}
+
+void EnqueueByCircular(CircularQueue *pq, QueueData data) {
+    if(GetCircularQueueNextPositionIndex(pq->rear) == pq->front) {
+        printf("queue is full\n");
+        exit(-1);
+    }
+    pq->rear = GetCircularQueueNextPositionIndex(pq->rear);
+    pq->queueArray[pq->rear] = data;
+}
+
+QueueData DequeueByCircular(CircularQueue *pq) {
+    if(CircularQueueIsEmpty(pq)) {
+        printf("queue is empty\n");
+        exit(-1);
+    }
+
+    pq->front = GetCircularQueueNextPositionIndex(pq->front);
+    return pq->queueArray[pq->front];
+}
+
+QueueData CircularQueuePeek(CircularQueue *pq) {
+    if(CircularQueueIsEmpty(pq)) {
+        printf("queue is empty\n");
+        exit(-1);
+    }
+    return pq->queueArray[GetCircularQueueNextPositionIndex(pq->front)];
 }

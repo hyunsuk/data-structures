@@ -22,4 +22,11 @@ void Push(ArrayStack *stack, StackData data);
 StackData Pop(ArrayStack *stack);
 StackData Peek(ArrayStack *stack);
 
+void CircularQueueInit(CircularQueue *pq);
+int CircularQueueIsEmpty(CircularQueue *pq);
+
+void EnqueueByCircular(CircularQueue *pq, QueueData data);
+QueueData DequeueByCircular(CircularQueue *pq);
+QueueData CircularQueuePeek(CircularQueue *pq);
+
 #endif

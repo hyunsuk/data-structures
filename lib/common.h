@@ -13,11 +13,13 @@
 
 #define LIST_LEN 100
 #define STACK_LEN 100
+#define QUEUE_LEN 100
 #define ARRAY_LENGTH(x)  (sizeof(x) / sizeof(*x))
 
 typedef int ListData;
 typedef int NodeData;
 typedef int StackData;
+typedef int QueueData;
 
 typedef struct ArrayList {
     ListData arr[LIST_LEN];
@@ -61,5 +63,11 @@ typedef struct ArrayStack {
 typedef struct Stack {
     Node *head;
 } Stack;
+
+typedef struct CircularQueue {
+    int front;
+    int rear;
+    QueueData queueArray[QUEUE_LEN];
+} CircularQueue;
 
 #endif
