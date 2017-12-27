@@ -106,7 +106,20 @@ void ShowPrefixTypeExp(BTreeNode *bt) {
     PreorderTraverse(bt, ShowTreeNodeData);
 }
 void ShowInfixTypeExp(BTreeNode *bt) {
-    InorderTraverse(bt, ShowTreeNodeData);
+    if(bt == NULL) {
+        return;
+    }
+    if(bt->left != NULL || bt->right != NULL) {
+        printf("( ");
+    }
+
+    ShowInfixTypeExp(bt->left);
+    ShowTreeNodeData(bt->data);
+    ShowInfixTypeExp(bt->right);
+
+    if(bt->left != NULL || bt->right != NULL) {
+        printf(") ");
+    }
 }
 void ShowPostfixTypeExp(BTreeNode *bt) {
     PostorderTraverse(bt, ShowTreeNodeData);
