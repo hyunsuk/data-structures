@@ -1,5 +1,5 @@
 #ifndef LIB_DEQUE_H_
-#define LIB_DEQUEUE_H_
+#define LIB_DEQUE_H_
 
 typedef struct Deque {
     Node *head;
